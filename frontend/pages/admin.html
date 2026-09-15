@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Management - Fanty Inventory</title>
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Admin Management</h1>
+            <div class="header-actions">
+                <div id="connectionStatus" class="connection-status online">Online</div>
+                <div class="user-info">
+                    <span id="currentUser">Welcome, User</span>
+                </div>
+                <button type="button" class="nav-link back-btn" onclick="window.history.back()">Back</button>
+                <a href="index.html" class="nav-link">Add Item</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="order-creation.html" class="nav-link">Create Order</a>
+                <a href="order-history.html" class="nav-link">Order History</a>
+                <button id="logoutBtn" class="nav-link logout-btn">Logout</button>
+            </div>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search by item name or code...">
+            <select id="categoryFilter">
+                <option value="">All Categories</option>
+                <option value="BOXER">BOXER</option>
+                <option value="FEKON">FEKON</option>
+                <option value="KINGLION">KINGLION</option>
+                <option value="HAUJUE">HAUJUE</option>
+                <option value="TVS">TVS</option>
+            </select>
+            <button id="refreshBtn" class="refresh-btn">Refresh</button>
+        </div>
+
+        <div class="table-container">
+            <table id="itemsTable">
+                <thead>
+                    <tr>
+                        <th>Item Code</th>
+                        <th>Item Name</th>
+                        <th>Category</th>
+                        <th>Quantity</th>
+                        <th>Buying Price (Tsh)</th>
+                        <th>Selling Price (Tsh)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="itemsTableBody">
+                    <tr>
+                        <td colspan="7" class="no-data">Loading items...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="messageBox" class="message-box"></div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Item</h2>
+                <span class="close">&times;</span>
+            </div>
+            <form id="editForm">
+                <input type="hidden" id="editItemId">
+                
+                <label for="editItemCode">Item Code</label>
+                <input type="text" id="editItemCode" readonly>
+                
+                <label for="editItemName">Item Name</label>
+                <input type="text" id="editItemName" required minlength="2">
+                
+                <label for="editCategory">Category</label>
+                <select id="editCategory" required>
+                    <option value="">--Select Category--</option>
+                    <option value="BOXER">BOXER</option>
+                    <option value="FEKON">FEKON</option>
+                    <option value="KINGLION">KINGLION</option>
+                    <option value="HAUJUE">HAUJUE</option>
+                    <option value="TVS">TVS</option>
+                </select>
+                
+                <label for="editQuantity">Quantity</label>
+                <input type="number" id="editQuantity" min="1" required>
+                
+                <label for="editBuyingPrice">Buying Price (Tsh)</label>
+                <input type="number" id="editBuyingPrice" step="0.01" min="0" required>
+                
+                <label for="editSellingPrice">Selling Price (Tsh)</label>
+                <input type="number" id="editSellingPrice" step="0.01" min="0" required>
+                
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="save-btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Delete</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this item?</p>
+                <p><strong id="deleteItemName"></strong></p>
+                <p class="warning">This action cannot be undone.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="cancel-btn">Cancel</button>
+                <button type="button" id="confirmDeleteBtn" class="delete-btn">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>

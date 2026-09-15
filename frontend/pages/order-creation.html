@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Creation - Fanty Inventory</title>
+    <link rel="stylesheet" href="order-creation.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Order Creation</h1>
+            <div class="header-actions">
+                <div id="connectionStatus" class="connection-status online">Online</div>
+                <div class="user-info">
+                    <span id="currentUser">Welcome, User</span>
+                </div>
+                <button type="button" class="nav-link back-btn" onclick="window.history.back()">Back</button>
+                <a href="index.html" class="nav-link">Add Item</a>
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="admin.html" class="nav-link">Admin</a>
+                <a href="order-history.html" class="nav-link">Order History</a>
+                <button id="logoutBtn" class="nav-link logout-btn">Logout</button>
+            </div>
+        </div>
+
+        <div class="order-info">
+            <div class="info-group">
+                <label for="orderId">Order ID</label>
+                <input type="text" id="orderId" readonly>
+            </div>
+            <div class="info-group">
+                <label for="customerName">Customer Name (Optional)</label>
+                <input type="text" id="customerName" placeholder="Enter customer name">
+            </div>
+            <div class="info-group">
+                <label for="orderDate">Order Date</label>
+                <input type="text" id="orderDate" readonly>
+            </div>
+        </div>
+
+        <div class="item-selection">
+            <h2>Add Items to Order</h2>
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" id="itemSearch" placeholder="Search items by name, code, or category..." autocomplete="off">
+                    <div id="suggestions" class="suggestions-dropdown"></div>
+                </div>
+            </div>
+
+            <div class="item-details">
+                <div class="detail-group">
+                    <label for="selectedItemCode">Item Code</label>
+                    <input type="text" id="selectedItemCode" readonly>
+                </div>
+                <div class="detail-group">
+                    <label for="selectedItemName">Item Name</label>
+                    <input type="text" id="selectedItemName" readonly>
+                </div>
+                <div class="detail-group">
+                    <label for="selectedCategory">Category</label>
+                    <input type="text" id="selectedCategory" readonly>
+                </div>
+                <div class="detail-group">
+                    <label for="selectedSellingPrice">Selling Price (Tsh)</label>
+                    <input type="text" id="selectedSellingPrice" readonly>
+                </div>
+                <div class="detail-group">
+                    <label for="quantityOut">Quantity Out</label>
+                    <input type="number" id="quantityOut" min="1" value="1">
+                </div>
+                <div class="detail-group">
+                    <label for="subtotal">Subtotal (Tsh)</label>
+                    <input type="text" id="subtotal" readonly>
+                </div>
+                <button id="addItemBtn" class="add-btn">Add Item to Order</button>
+            </div>
+        </div>
+
+        <div class="order-items">
+            <h2>Order Items</h2>
+            <div class="table-container">
+                <table id="orderItemsTable">
+                    <thead>
+                        <tr>
+                            <th>Item Code</th>
+                            <th>Item Name</th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                            <th>Price (Tsh)</th>
+                            <th>Subtotal (Tsh)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orderItemsBody">
+                        <tr>
+                            <td colspan="7" class="no-data">No items added to order yet</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="order-summary">
+                <div class="summary-row">
+                    <span>Total Items:</span>
+                    <span id="totalItems">0</span>
+                </div>
+                <div class="summary-row">
+                    <span>Total Value (Tsh):</span>
+                    <span id="totalValue">Tsh 0.00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="order-actions">
+            <button id="saveDraftBtn" class="draft-btn">Save Draft</button>
+            <button id="submitOrderBtn" class="submit-btn">Submit Order</button>
+            <button id="clearOrderBtn" class="clear-btn">Clear Order</button>
+        </div>
+
+        <div id="messageBox" class="message-box"></div>
+    </div>
+
+    <!-- Edit Item Modal -->
+    <div id="editItemModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Order Item</h2>
+                <span class="close">&times;</span>
+            </div>
+            <form id="editItemForm">
+                <input type="hidden" id="editItemIndex">
+                
+                <label for="editItemCode">Item Code</label>
+                <input type="text" id="editItemCode" readonly>
+                
+                <label for="editItemName">Item Name</label>
+                <input type="text" id="editItemName" readonly>
+                
+                <label for="editQuantity">Quantity</label>
+                <input type="number" id="editQuantity" min="1" required>
+                
+                <label for="editPrice">Price (Tsh)</label>
+                <input type="number" id="editPrice" step="0.01" min="0" required>
+                
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="save-btn">Update Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="order-creation.js"></script>
+</body>
+</html>

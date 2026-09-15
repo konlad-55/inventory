@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Dashboard - Fanty Motorcycle Spare Parts</title>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Inventory Dashboard</h1>
+            <div class="refresh-info">
+                <div class="header-actions">
+                    <button type="button" class="nav-btn back-btn" onclick="window.history.back()">Back</button>
+                    <a href="index.html" class="nav-btn">Add Item</a>
+                    <a href="admin.html" class="nav-btn">Admin</a>
+                    <a href="order-creation.html" class="nav-btn">Create Order</a>
+                    <a href="order-history.html" class="nav-btn">Order History</a>
+                    <button id="logoutBtn" class="nav-btn logout-btn">Logout</button>
+                </div>
+                <div class="user-info">
+                    <span id="currentUser">Welcome, User</span>
+                </div>
+                <span id="lastUpdated">Last updated: Never</span>
+                <button id="refreshBtn" class="refresh-btn">Refresh</button>
+            </div>
+        </div>
+
+        <div class="stats-cards">
+            <div class="stat-card">
+                <h3>Total Categories</h3>
+                <p id="totalCategories">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Items</h3>
+                <p id="totalItems">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Quantity</h3>
+                <p id="totalQuantity">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Value (Tsh)</h3>
+                <p id="totalValue">Tsh 0.00</p>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="summaryTable">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Total Items</th>
+                        <th>Total Quantity</th>
+                        <th>Total Value (Tsh)</th>
+                    </tr>
+                </thead>
+                <tbody id="summaryTableBody">
+                    <tr>
+                        <td colspan="4" class="no-data">Loading data...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="navigation">
+            <a href="index.html" class="nav-btn">Add New Item</a>
+            <a href="admin.html" class="nav-btn">Admin Management</a>
+            <a href="order-creation.html" class="nav-btn">Create Order</a>
+            <a href="order-history.html" class="nav-btn">Order History</a>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
