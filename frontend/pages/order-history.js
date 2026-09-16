@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const API_URL = "http://localhost:8080/api/orders";
     const ordersTableBody = document.getElementById("ordersTableBody");
     const messageBox = document.getElementById("messageBox");
     const connectionStatus = document.getElementById("connectionStatus");
@@ -94,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
             refreshBtn.textContent = "Loading...";
             ordersTableBody.innerHTML = '<tr><td colspan="7" class="no-data">Loading orders...</td></tr>';
 
-            const response = await fetch(API_URL);
+            const response = await fetch(`${API_URL}/orders`);
             
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -194,7 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // View order details
     async function viewOrderDetails(orderId) {
         try {
-            const response = await fetch(`${API_URL}/${orderId}`);
+            const response = await fetch(`${API_URL}/orders/${orderId}`);
             
             if (response.ok) {
                 const order = await response.json();
@@ -250,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         try {
-            const response = await fetch(`${API_URL}/${orderId}`);
+            const response = await fetch(`${API_URL}/orders/${orderId}`);
             if (!response.ok) throw new Error('Draft could not be loaded');
             const order = await response.json();
             const draftData = {
@@ -289,7 +288,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!orderToDelete) return;
 
         try {
-            const response = await fetch(`${API_URL}/${orderToDelete}`, {
+            const response = await fetch(`${API_URL}/orders/${orderToDelete}`, {
                 method: "DELETE"
             });
 

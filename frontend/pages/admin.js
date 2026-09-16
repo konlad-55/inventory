@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const API_URL = "http://localhost:8080/api/items";
     const tableBody = document.getElementById("itemsTableBody");
     const searchInput = document.getElementById("searchInput");
     const categoryFilter = document.getElementById("categoryFilter");
@@ -87,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
             refreshBtn.textContent = "Loading...";
             tableBody.innerHTML = '<tr><td colspan="7" class="no-data">Loading items...</td></tr>';
 
-            const response = await fetch(API_URL);
+            const response = await fetch(`${API_URL}/items`);
             
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -230,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         try {
-            const response = await fetch(`${API_URL}/${itemId}`, {
+            const response = await fetch(`${API_URL}/items/${itemId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -257,7 +256,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!itemToDelete) return;
 
         try {
-            const response = await fetch(`${API_URL}/${itemToDelete}`, {
+            const response = await fetch(`${API_URL}/items/${itemToDelete}`, {
                 method: "DELETE"
             });
 

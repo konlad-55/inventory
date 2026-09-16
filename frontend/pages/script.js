@@ -252,7 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const rows = XLSX.utils.sheet_to_json(sheet, { defval: '', raw: false });
             const validItems = validateImportedItems(rows);
 
-            const response = await fetch('http://localhost:8080/api/items/import', {
+            const response = await fetch(`${API_URL}/items/import`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -340,7 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             // Send to backend API
-            const response = await fetch("http://localhost:8080/api/items", {
+            const response = await fetch(`${API_URL}/items`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -379,7 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (offlineDrafts.length > 0) {
             try {
-                const response = await fetch("http://localhost:8080/api/sync-drafts", {
+                const response = await fetch(`${API_URL}/sync-drafts`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
