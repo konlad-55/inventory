@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const API_URL = "http://localhost:8080/api/items/summary";
+   const API_URL = "https://inventory-production-f5f7.up.railway.app/api/items/summary";
     const tableBody = document.getElementById("summaryTableBody");
     const lastUpdatedElement = document.getElementById("lastUpdated");
     const refreshBtn = document.getElementById("refreshBtn");
