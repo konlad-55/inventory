@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const API_URL = "http://localhost:8080/api/items/summary";
     const tableBody = document.getElementById("summaryTableBody");
     const lastUpdatedElement = document.getElementById("lastUpdated");
     const refreshBtn = document.getElementById("refreshBtn");
@@ -64,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
             refreshBtn.textContent = "Loading...";
             tableBody.innerHTML = '<tr><td colspan="4" class="no-data">Loading data...</td></tr>';
 
-            const response = await fetch(API_URL);
+            const response = await fetch(`${API_URL}/items/summary`);
             
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);

@@ -25,7 +25,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const API_URL = "http://localhost:8080/api";
     const ORDER_API_URL = `${API_URL}/orders`;
     
     // DOM Elements
