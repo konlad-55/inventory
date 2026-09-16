@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const API_URL = "http://localhost:8080/api";
+   const API_URL = "https://inventory-production-f5f7.up.railway.app/api";
     const loginForm = document.getElementById("loginForm");
     const loginBtn = document.getElementById("loginBtn");
     const errorMessage = document.getElementById("errorMessage");
