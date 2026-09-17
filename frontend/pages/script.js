@@ -379,7 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         if (offlineDrafts.length > 0) {
             try {
-                const response = await fetch("http://localhost:8080/api/sync-drafts", {
+                const response = await fetch("https://inventory-production-f5f7.up.railway.app/api/sync-drafts", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
