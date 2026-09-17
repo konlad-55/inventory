@@ -340,7 +340,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         try {
             // Send to backend API
-            const response = await fetch("http://localhost:8080/api/items", {
+            const response = await fetch("https://inventory-production-f5f7.up.railway.app/api/items", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
