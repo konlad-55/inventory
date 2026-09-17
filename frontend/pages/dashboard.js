@@ -139,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchDashboardData();
 
     // Auto-refresh every 5 seconds for real-time updates
-    setInterval(fetchDashboardData, 3600000);
+    setInterval(fetchDashboardData, 3600);
 
     // Handle visibility change - refresh when tab becomes visible
     document.addEventListener("visibilitychange", () => {
