@@ -252,7 +252,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const rows = XLSX.utils.sheet_to_json(sheet, { defval: '', raw: false });
             const validItems = validateImportedItems(rows);
 
-            const response = await fetch('https://inventory-production-f5f7.up.railway.app/api/items/import', {, {
+            const response = await fetch('https://inventory-production-f5f7.up.railway.app/api/items/import', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
