@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const API_URL = "http://localhost:8080/api/orders";
+    const API_URL = "https://inventory-production-f5f7.up.railway.app/api/orders";
     const ordersTableBody = document.getElementById("ordersTableBody");
     const messageBox = document.getElementById("messageBox");
     const connectionStatus = document.getElementById("connectionStatus");
