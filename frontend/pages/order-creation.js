@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    const API_URL = "https://inventory-production-f5f7.up.railway.app";
+    const API_URL = "https://inventory-production-f5f7.up.railway.app/api";
     const ORDER_API_URL = `${API_URL}/orders`;
     
     // DOM Elements
